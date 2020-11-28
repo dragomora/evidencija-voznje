@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".activity.KorisniciActivity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/HBguideTopMenu"
+        app:layout_constraintEnd_toEndOf="@id/VRguideTopMenu"
+        app:layout_constraintStart_toStartOf="@id/VLguideTopMenu"
+        app:layout_constraintTop_toTopOf="@id/HTguideTopMenu">
+
+        <Button
+            android:id="@+id/buttonBack"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            app:icon="@drawable/ic_baseline_arrow_back_24"
+            app:iconSize="35dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|top"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/textSpisakKorisnika"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/buttonRefresh"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            app:icon="@drawable/ic_baseline_autorenew_24"
+            app:iconSize="35dp" />
+
+        <Button
+            android:id="@+id/buttonAdd"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:iconSize="35dp" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/VLguideTopMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/VRguideTopMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.99" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/HTguideTopMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/HBguideTopMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="@color/blue_gray_light"
+        app:layout_constraintEnd_toEndOf="@id/VRguideTopMenu"
+        app:layout_constraintStart_toStartOf="@id/VLguideTopMenu"
+        app:layout_constraintTop_toBottomOf="@id/HBguideTopMenu" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/HTguideList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1504788" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/HBguideList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rviewListaVozila"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/HBguideList"
+        app:layout_constraintLeft_toLeftOf="@id/VLguideTopMenu"
+        app:layout_constraintRight_toRightOf="@id/VRguideTopMenu"
+        app:layout_constraintTop_toBottomOf="@id/HBguideTopMenu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
