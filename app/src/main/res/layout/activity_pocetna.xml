@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".PocetnaActivity">
+    tools:context=".activity.PocetnaActivity">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonVozila"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -30,6 +30,7 @@
         android:layout_height="0dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
+        android:onClick="goToOtvoriVoznju"
         android:text="@string/btnNovaVoznja"
         android:textSize="18sp"
         app:backgroundTint="#4E4D4D"

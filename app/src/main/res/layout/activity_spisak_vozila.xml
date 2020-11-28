@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".SpisakVozilaActivity">
+    tools:context=".activity.KorisniciActivity">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -97,18 +97,6 @@
         app:layout_constraintStart_toStartOf="@id/VLguideTopMenu"
         app:layout_constraintTop_toBottomOf="@id/HBguideTopMenu" />
 
-    <ListView
-        android:id="@+id/listSpisakVozila"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#000000"
-        app:layout_constraintBottom_toBottomOf="@id/HBguideList"
-        app:layout_constraintEnd_toEndOf="@id/VRguideTopMenu"
-        app:layout_constraintStart_toStartOf="@id/VLguideTopMenu"
-        android:divider="@color/colorPrimary"
-        android:dividerHeight="1dip"
-        app:layout_constraintTop_toTopOf="@id/HTguideList" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/HTguideList"
         android:layout_width="wrap_content"
@@ -122,5 +110,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rviewListaVozila"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/HBguideList"
+        app:layout_constraintLeft_toLeftOf="@id/VLguideTopMenu"
+        app:layout_constraintRight_toRightOf="@id/VRguideTopMenu"
+        app:layout_constraintTop_toBottomOf="@id/HBguideTopMenu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
