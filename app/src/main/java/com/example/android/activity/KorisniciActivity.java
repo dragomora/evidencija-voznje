@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -65,6 +66,8 @@ public class KorisniciActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void setDataInRecyclerView(){
         // set a LinearLayoutManager with default vertical orientation
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(KorisniciActivity.this);
@@ -86,4 +89,5 @@ public class KorisniciActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
+
 }

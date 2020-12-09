@@ -2,14 +2,13 @@ package com.example.android.data.model;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Vozilo {
 
     private String id;
     private Date datum_registracije;
-    private Integer predjenoKm;
+    private Integer trenutnaKm;
     private String registarskiBroj;
     private String naziv;
     private Boolean zauzeto;
@@ -31,12 +30,12 @@ public class Vozilo {
         this.datum_registracije = datum_registracije;
     }
 
-    public Integer getPredjenoKm() {
-        return predjenoKm;
+    public Integer getTrenutnaKm() {
+        return trenutnaKm;
     }
 
-    public void setPredjenoKm(Integer predjenoKm) {
-        this.predjenoKm = predjenoKm;
+    public void setTrenutnaKm(Integer trenutnaKm) {
+        this.trenutnaKm = trenutnaKm;
     }
 
     public String getRegistarskiBroj() {
@@ -70,6 +69,19 @@ public class Vozilo {
     public void setAdditionalProperties(Map<String, Object> additionalProperties) {
         this.additionalProperties = additionalProperties;
     }
+
+    public Vozilo() {
+    }
+
+    public Vozilo(String id, Date datum_registracije, Integer trenutnaKm, String registarskiBroj, String naziv, Boolean zauzeto) {
+        this.id = id;
+        this.datum_registracije = datum_registracije;
+        this.trenutnaKm = trenutnaKm;
+        this.registarskiBroj = registarskiBroj;
+        this.naziv = naziv;
+        this.zauzeto = zauzeto;
+    }
+
     @Override
     public String toString(){
         return this.getRegistarskiBroj() + " ("+this.getNaziv() + ")";

@@ -11,6 +11,7 @@ public class Korisnici {
     private Boolean admin;
     private String korisnickoIme;
     private String lozinka;
+    private String otvorenaVoznjaId;
     private Map<String,Object> additionalProperties = new HashMap<String,Object>();
 
     public String getId() {
@@ -59,6 +60,14 @@ public class Korisnici {
 
     public void setLozinka(String lozinka) {
         this.lozinka = lozinka;
+    }
+
+    public String getOtvorenaVoznjaId() {
+        return otvorenaVoznjaId;
+    }
+
+    public void setOtvorenaVoznjaId(String otvorenaVoznjaId) {
+        this.otvorenaVoznjaId = otvorenaVoznjaId;
     }
 
     public Map<String, Object> getAdditionalProperties() {

@@ -1,6 +1,6 @@
 package com.example.android.data.Interface;
 
-import com.example.android.data.model.Korisnici;
+
 import com.example.android.data.model.Vozilo;
 import retrofit2.Call;
 import retrofit2.http.GET;

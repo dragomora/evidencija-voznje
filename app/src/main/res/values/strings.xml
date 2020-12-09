@@ -27,11 +27,12 @@
     <string name="textOtvaranjeVoznje">Otvaranje vožnje</string>
     <string name="hintVozilo"><i>odaberi vozilo</i></string>
     <string name="hintPocetnaKm"><i>početna km</i></string>
-    <string name="hintLokacija"><i>lokacija</i></string>
+    <string name="hintLokacija"><i>destinacija</i></string>
     <string name="lokacija">Novi Sad</string>
     <string name="svrha_voznje"><i>svrha vožnje</i></string>
     <string name="stanje_vozila"><i>stanje vozila</i></string>
     <string name="vremePocetkaVoznje"><i>vreme početka vožnje</i></string>
+    <string name="korisnik"><i>korisnik</i></string>
     <string name="napomena">napomena</string>
     <string name="napomenaMultiline">napomena:</string>
 

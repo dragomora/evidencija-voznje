@@ -15,7 +15,7 @@
         android:insetBottom="0dp"
         android:onClick="goToSpisakVozila"
         android:text="@string/btnVozila"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:backgroundTint="#4E4D4D"
         app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="@id/HBguideVozila"
@@ -27,12 +27,12 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonNovaVoznja"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:onClick="goToOtvoriVoznju"
         android:text="@string/btnNovaVoznja"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:backgroundTint="#4E4D4D"
         app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="@id/HBguideNovaVoznja"
@@ -44,11 +44,11 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonZatvoriVoznju"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="@string/btnZatvoriVoznju"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:backgroundTint="#4E4D4D"
         app:cornerRadius="25dp"
         app:layout_constraintBottom_toTopOf="@id/HBguideZatvoriVoznju"
@@ -67,7 +67,7 @@
         android:textColor="#FAFAFA"
 
         android:textColorHighlight="?android:attr/colorBackground"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@id/HBguideEvidencijaVoznjeTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -85,7 +85,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/HTguideImg"
-        app:srcCompat="@drawable/car" />
+        app:srcCompat="@drawable/car2" />
 
     <View
         android:id="@+id/divider"
