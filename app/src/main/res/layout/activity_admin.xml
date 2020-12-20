@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="623dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#001A2E"
+        tools:context=".activity.AdminActivity">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAdmin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="goToSpisakVozila"
+            android:text="@string/lista_vozila"
+            android:textSize="16sp"
+            app:backgroundTint="#1f3747"
+            app:cornerRadius="25dp"
+            app:layout_constraintEnd_toEndOf="@id/VRguideButtons"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/VLguideButtons"
+            app:layout_constraintTop_toBottomOf="@id/HTguideVozila" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnListaVoznji"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="goToListaVoznji"
+            android:text="@string/lista_voznji"
+            android:textSize="16sp"
+            app:backgroundTint="#1f3747"
+            app:cornerRadius="25dp"
+            app:layout_constraintEnd_toEndOf="@id/VRguideButtons"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/VLguideButtons"
+            app:layout_constraintTop_toTopOf="@+id/HTguideImg" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnListaKorisnika"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="goToSpisakKorisnika"
+            android:text="@string/lista_korisnika"
+            android:textSize="16sp"
+            app:backgroundTint="#1f3747"
+            app:cornerRadius="25dp"
+            app:layout_constraintEnd_toEndOf="@id/VRguideButtons"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/VLguideButtons"
+            app:layout_constraintTop_toTopOf="@+id/HTguideNovaVoznja3" />
+
+
+        <TextView
+            android:id="@+id/textNaslovAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/admin_stranica"
+            android:textColor="#FAFAFA"
+
+            android:textColorHighlight="?android:attr/colorBackground"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@id/HBguideEvidencijaVoznjeTxt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="80dp"
+            android:contentDescription="@string/imgPositive"
+            app:layout_constraintBottom_toTopOf="@+id/HTguideNovaVoznja"
+            app:layout_constraintEnd_toStartOf="@+id/VRguideButtons"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
+            app:layout_constraintTop_toBottomOf="@+id/btnListaKorisnika"
+            app:srcCompat="@drawable/top_car" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:foreground="#ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/HBguideEvidencijaVoznjeTxt" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VLguideView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.06" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VRguideView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.94" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VLguideButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/VRguideButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.80" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HBguideEvidencijaVoznjeTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.098495215" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HTguideVozila"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HBguideVozila"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.21"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HTguideImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.24"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HTguideNovaVoznja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.74" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HTguideNovaVoznja2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.31" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HTguideNovaVoznja3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.34" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

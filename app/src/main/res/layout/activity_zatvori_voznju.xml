@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#001A2E"
+    tools:context=".activity.OtvoriVoznjuActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/HBguideTopMenu"
+        app:layout_constraintEnd_toEndOf="@id/VRguideTopMenu"
+        app:layout_constraintStart_toStartOf="@id/VLguideTopMenu"
+        app:layout_constraintTop_toTopOf="@id/HTguideTopMenu">
+
+        <Button
+            android:id="@+id/buttonBack"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            app:icon="@drawable/ic_baseline_arrow_back_24"
+            app:iconSize="35dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|top"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/textZatvaranjeVoznje"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/buttonRefresh"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            app:icon="@drawable/ic_baseline_autorenew_24"
+            app:iconSize="35dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonPostVoznja"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            android:visibility="visible"
+            app:icon="@drawable/ic_baseline_check_circle_24"
+            app:iconSize="35dp"
+            tools:visibility="visible" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/VLguideTopMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/VRguideTopMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.99" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/HTguideTopMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/HBguideTopMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/blue_gray_light"
+        app:layout_constraintEnd_toEndOf="@id/VRguideTopMenu"
+        app:layout_constraintStart_toStartOf="@id/VLguideTopMenu"
+        app:layout_constraintTop_toBottomOf="@id/HBguideTopMenu" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/HTguideList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/HBguideList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtVoziloNaziv"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:focusable="auto"
+        android:hint="@string/textVoziloNaziv"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8d8a8a"
+        app:boxStrokeColor="@color/text_view"
+        app:layout_constraintBottom_toTopOf="@+id/HTguideList"
+        app:layout_constraintEnd_toStartOf="@+id/VRguideTopMenu"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/VLguideTopMenu"
+        app:layout_constraintTop_toTopOf="@+id/HBguideTopMenu">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="0dp"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pocetnaKm"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="@string/hintPocetnaKm"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8d8a8a"
+        app:boxStrokeColor="@color/text_view"
+        app:layout_constraintEnd_toStartOf="@+id/VViewHalf"
+        app:layout_constraintStart_toStartOf="@+id/VLguideTopMenu"
+        app:layout_constraintTop_toTopOf="@+id/HTguideList">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:textColor="#FFFFFF" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/zavrsnaKm"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="@string/hintZavrsnaKm"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8d8a8a"
+        app:boxStrokeColor="@color/text_view"
+        app:layout_constraintEnd_toStartOf="@+id/VRguideTopMenu"
+        app:layout_constraintStart_toStartOf="@+id/VViewHalf"
+        app:layout_constraintTop_toTopOf="@+id/HTguideList">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:textColor="#FFFFFF" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/VViewHalf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50121653" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/destinacija"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:focusable="auto"
+        android:hint="@string/hintLokacija"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8d8a8a"
+        app:boxStrokeColor="@color/text_view"
+        app:layout_constraintEnd_toStartOf="@+id/VRguideTopMenu"
+        app:layout_constraintStart_toStartOf="@+id/VViewHalf"
+        app:layout_constraintTop_toBottomOf="@+id/zavrsnaKm">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="@string/lokacija"
+            android:textColor="#FFFFFF" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/svrhaVoznje"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/svrha_voznje"
+        android:inputType="textNoSuggestions"
+        android:textColorHint="#8d8a8a"
+        app:boxStrokeColor="@color/text_view"
+        app:endIconTint="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/VViewHalf"
+        app:layout_constraintStart_toStartOf="@+id/VLguideTopMenu"
+        app:layout_constraintTop_toBottomOf="@+id/pocetnaKm">
+        <!--        app:hintTextColor="#D6D6D6">-->
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/stanjeVozila"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:hint="@string/stanje_vozila"
+        android:inputType="textNoSuggestions"
+        android:textColorHint="#8d8a8a"
+        app:boxStrokeColor="@color/text_view"
+        app:endIconTint="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/VRguideTopMenu"
+        app:layout_constraintStart_toStartOf="@+id/VViewHalf"
+        app:layout_constraintTop_toBottomOf="@+id/destinacija">
+        <!--        app:hintTextColor="#D6D6D6">-->
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/vreme_zavrsetka_voznje"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:focusable="auto"
+        android:hint="@string/vremeZavrsetkaVoznje"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8d8a8a"
+        app:boxStrokeColor="@color/text_view"
+        app:layout_constraintEnd_toStartOf="@+id/VViewHalf"
+        app:layout_constraintStart_toStartOf="@+id/VLguideTopMenu"
+        app:layout_constraintTop_toBottomOf="@+id/svrhaVoznje">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/korisnik"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:focusable="auto"
+        android:hint="@string/korisnik"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8d8a8a"
+        app:boxStrokeColor="@color/text_view"
+        app:layout_constraintEnd_toStartOf="@+id/VRguideTopMenu"
+        app:layout_constraintStart_toStartOf="@+id/VLguideTopMenu"
+        app:layout_constraintTop_toBottomOf="@+id/vreme_zavrsetka_voznje">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/napomenaMultiLine"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:focusable="auto"
+        android:hint="@string/napomenaMultiline"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8d8a8a"
+        app:boxStrokeColor="@color/text_view"
+        app:layout_constraintEnd_toStartOf="@+id/VRguideTopMenu"
+        app:layout_constraintStart_toStartOf="@+id/VLguideTopMenu"
+        app:layout_constraintTop_toBottomOf="@+id/korisnik">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:textColor="#FFFFFF" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressCirc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/HTguideTopMenu" />
+
+
+    <!--
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="#4E4D4D"
+            android:textColor="#FAFAFA"
+            app:layout_constraintEnd_toStartOf="@+id/VRguideTopMenu"
+            app:layout_constraintStart_toStartOf="@+id/VLguideTopMenu"
+            app:layout_constraintTop_toTopOf="@+id/HTguideList" />
+    -->
+
+    <!--
+    <TextView
+        android:id="@+id/predjenoKm"
+        android:layout_width="144dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="100dp"
+        android:background="#A42A2A"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/VRguideTopMenu"
+        app:layout_constraintStart_toStartOf="@+id/VLguideTopMenu"
+        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
+-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

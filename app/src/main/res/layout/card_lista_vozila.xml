@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="4dp"
+    tools:context=".activity.VozilaActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardListaVozila"
+        style="@style/CardView.Dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        app:cardBackgroundColor="#1f3747"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/cardNaslov"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"
+                android:text="NS 222 IK (Opel Astra)"
+                android:textColor="#D6D6D6"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/cardPodnaslov"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingStart="15dp"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/cardNaslov"
+                tools:layout_editor_absoluteX="15dp"
+                tools:text="SLOBODNO" />
+
+            <Button
+                android:id="@+id/arrowBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                android:backgroundTint="#FFFFFF"
+                android:textAlignment="gravity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardPodnaslov" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/expandableView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="12dp"
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@+id/cardPodnaslov">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Detalji:"
+                    android:textColor="@color/text_view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#2d5e7f"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.66" />
+
+                <TableLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+                    <TableRow
+                        android:id="@+id/row1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="2dp">
+
+                        <TextView
+                            android:id="@+id/registracija"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Datum registracije:"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/text_view" />
+
+                        <TextView
+                            android:id="@+id/txtRegistracija"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:text="TextView"
+                            android:textColor="#F6F4F4"
+                            tools:text="testme" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/row2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="2dp">
+
+                        <TextView
+                            android:id="@+id/s_interval"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Servisni interval:"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/text_view" />
+
+                        <TextView
+                            android:id="@+id/txtServisniInterval"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:text="TextView"
+                            android:textColor="#F6F4F4"
+                            tools:text="testme" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/row3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="2dp">
+
+                        <TextView
+                            android:id="@+id/servis"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Km do servisa:"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/text_view" />
+
+                        <TextView
+                            android:id="@+id/txtDoServisaKm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:text="TextView"
+                            android:textColor="#F6F4F4"
+                            tools:text="testme" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/row4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="2dp">
+
+                        <TextView
+                            android:id="@+id/trenutnokm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Trenutno km:"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/text_view" />
+
+                        <TextView
+                            android:id="@+id/txtTrenutnoKm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:text="TextView"
+                            android:textColor="#F6F4F4"
+                            tools:text="testme" />
+                    </TableRow>
+
+                </TableLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
