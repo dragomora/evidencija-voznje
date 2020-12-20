@@ -1,14 +1,8 @@
 package com.example.android.data.model;
 
-import java.time.LocalDate;
 import java.util.Date;
-
-import androidx.core.app.RemoteInput;
-import com.example.android.data.model.Korisnici;
 import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-
 
 public class Voznja {
     @SerializedName("_id")
@@ -19,19 +13,25 @@ public class Voznja {
     private Integer zavrsnaKm;
     private Integer predjenoKm;
     private Date krajVoznje;
-    //@SerializedName("korisnik")
     @Expose
+    @SerializedName("korisnik")
     private Korisnici korisnikId;
     @SerializedName("korisnik_id")
     private String korisnik_Id;
+    @SerializedName("vozilo")
+    private Vozilo vozilo;
     private String voziloId;
     private SvrhaVoznje svrha;
+    private Gorivo gorivo;
+    private String gorivoId;
+
     private StanjeVozila stanjeVozila;
     private String napomena;
     private String destinacija;
     private boolean pranje;
+    private boolean expanded;
 
-    public Voznja(String id, Date pocetakVoznje, Integer pocetnaKm, Integer zavrsnaKm, Integer predjenoKm, Date krajVoznje,Korisnici korisnikId, String voziloId, String napomena, boolean pranje) {
+    public Voznja(String id, Date pocetakVoznje, Integer pocetnaKm, Integer zavrsnaKm, Integer predjenoKm, Date krajVoznje,Korisnici korisnikId, Vozilo vozilo,Gorivo gorivo, String napomena, boolean pranje) {
         this.id = id;
         this.pocetakVoznje = pocetakVoznje;
         this.pocetnaKm = pocetnaKm;
@@ -39,9 +39,12 @@ public class Voznja {
         this.predjenoKm = predjenoKm;
         this.krajVoznje = krajVoznje;
         this.korisnikId = korisnikId;
+        this.vozilo = vozilo;
         this.voziloId = voziloId;
+        this.gorivo = gorivo;
         this.napomena = napomena;
         this.pranje = pranje;
+        this.expanded = false;
     }
     private Voznja voznja;
     public Voznja() {
@@ -78,6 +81,10 @@ public class Voznja {
         return zavrsnaKm;
     }
 
+    public String getDestinacija() {return destinacija;}
+
+    public void setDestinacija(String destinacija) {this.destinacija = destinacija;}
+
     public void setZavrsnaKm(Integer zavrsnaKm) {
         this.zavrsnaKm = zavrsnaKm;
     }
@@ -106,9 +113,21 @@ public class Voznja {
         return voziloId;
     }
 
+    public Vozilo getVozilo() { return vozilo; }
+
+    public void setVozilo(Vozilo vozilo) { this.vozilo = vozilo; }
+
     public void setVoziloId(String voziloId) {
         this.voziloId = voziloId;
     }
+
+    public Gorivo getGorivo() { return gorivo; }
+
+    public void setGorivo(Gorivo gorivo) { this.gorivo = gorivo; }
+
+    public String getGorivoId() { return gorivoId; }
+
+    public void setGorivoId(String gorivoId) { this.gorivoId = gorivoId; }
 
     public String getNapomena() {
         return napomena;
@@ -134,7 +153,21 @@ public class Voznja {
         this.korisnik_Id = korisnik_Id;
     }
 
-    public Voznja(Date pocetakVoznje, Integer pocetnaKm, Integer zavrsnaKm, Integer predjenoKm, Date krajVoznje, String korisnik_Id, String voziloId, String napomena,String destinacija, SvrhaVoznje svrha, StanjeVozila stanjeVozila, boolean pranje) {
+    public SvrhaVoznje getSvrha() { return svrha; }
+
+    public void setSvrha(SvrhaVoznje svrha) { this.svrha = svrha; }
+
+    public void setKorisnikId(Korisnici korisnikId) { this.korisnikId = korisnikId; }
+
+    public StanjeVozila getStanjeVozila() {return stanjeVozila; }
+
+    public void setStanjeVozila(StanjeVozila stanjeVozila) { this.stanjeVozila = stanjeVozila; }
+
+    public boolean isExpanded() { return expanded; }
+
+    public void setExpanded(boolean expanded) { this.expanded = expanded; }
+
+    public Voznja(Date pocetakVoznje, Integer pocetnaKm, Integer zavrsnaKm, Integer predjenoKm, Date krajVoznje, String korisnik_Id, String voziloId, String napomena, String destinacija, SvrhaVoznje svrha, StanjeVozila stanjeVozila, boolean pranje) {
         this.pocetakVoznje = pocetakVoznje;
         this.pocetnaKm = pocetnaKm;
         this.zavrsnaKm = zavrsnaKm;
@@ -148,5 +181,16 @@ public class Voznja {
         this.stanjeVozila = stanjeVozila;
         this.pranje = pranje;
     }
+
+    public Voznja(Integer zavrsnaKm, Integer predjenoKm, Date krajVoznje, StanjeVozila stanjeVozila, String napomena, String destinacija, boolean pranje) {
+        this.zavrsnaKm = zavrsnaKm;
+        this.predjenoKm = predjenoKm;
+        this.krajVoznje = krajVoznje;
+        this.stanjeVozila = stanjeVozila;
+        this.napomena = napomena;
+        this.destinacija = destinacija;
+        this.pranje = pranje;
+    }
+
 
 }

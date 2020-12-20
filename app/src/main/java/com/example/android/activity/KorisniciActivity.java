@@ -24,36 +24,28 @@ import java.util.List;
 public class KorisniciActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    List<Korisnici> korisniciResponseData;
+    List<Korisnici> korisniciList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spisak_korisnika);
         recyclerView = (RecyclerView) findViewById(R.id.rviewListaVozila);
         getKorisniciData();
-        //String[] foods = {"Bacon","Ham"};
-        //ListAdapter spisakVozilaAdapter = new ArrayAdapter<String>(this, R.layout.list_view_text_items,foods);
-        //ListView listSpisakVozila = (ListView) findViewById(R.id.listSpisakVozila);
-        //listSpisakVozila.setAdapter(spisakVozilaAdapter);
+        recyclerView = findViewById(R.id.rviewListaKorisnika);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
     private void getKorisniciData(){
-        // display a progress dialog
-        final ProgressDialog progressDialog;
-        progressDialog = new ProgressDialog(KorisniciActivity.this);
-        progressDialog.setCancelable(false); // set cancelable to false
-        progressDialog.setMessage("Please Wait"); // set message
-        progressDialog.show(); // show progress dialog
-
         (KorisniciApi.getClient().getUserList()).enqueue(new Callback<List<Korisnici>>() {
             @Override
             public void onResponse(Call<List<Korisnici>> call, Response<List<Korisnici>> response) {
                 Log.d("responseGET", response.body().get(0).getIme());
-                progressDialog.dismiss(); //dismiss progress dialog
-                korisniciResponseData = response.body();
+                korisniciList = response.body();
                 setDataInRecyclerView();
             }
 
@@ -61,20 +53,15 @@ public class KorisniciActivity extends AppCompatActivity {
             public void onFailure(Call<List<Korisnici>> call, Throwable t) {
 // if error occurs in network transaction then we can get the error in this method.
                 Toast.makeText(KorisniciActivity.this, t.toString(), Toast.LENGTH_LONG).show();
-                progressDialog.dismiss(); //dismiss progress dialog
             }
         });
     }
 
-
-
     private void setDataInRecyclerView(){
         // set a LinearLayoutManager with default vertical orientation
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(KorisniciActivity.this);
-        recyclerView.setLayoutManager(linearLayoutManager);
         // call the constructor of UsersAdapter to send the reference and data to Adapter
-        KorisniciAdapter korisniciAdapter = new KorisniciAdapter(KorisniciActivity.this, korisniciResponseData);
-        recyclerView.setAdapter(korisniciAdapter); // set the Adapter to RecyclerView
+        KorisniciAdapter adapter = new KorisniciAdapter(this, korisniciList);
+        recyclerView.setAdapter(adapter); // set the Adapter to RecyclerView
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -85,7 +72,6 @@ public class KorisniciActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#001A2E"
     tools:context=".activity.KorisniciActivity">
 
     <LinearLayout
@@ -36,7 +36,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/textSpisakKorisnika"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/text_view"
             android:textSize="24sp" />
 
         <Button
@@ -92,7 +92,8 @@
         android:id="@+id/divider2"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:background="@color/blue_gray_light"
+        android:background="#2d5e7f"
+        android:foreground="#2d5e7f"
         app:layout_constraintEnd_toEndOf="@id/VRguideTopMenu"
         app:layout_constraintStart_toStartOf="@id/VLguideTopMenu"
         app:layout_constraintTop_toBottomOf="@id/HBguideTopMenu" />
@@ -112,7 +113,7 @@
         app:layout_constraintGuide_percent="0.95" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rviewListaVozila"
+        android:id="@+id/rviewListaKorisnika"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@id/HBguideList"

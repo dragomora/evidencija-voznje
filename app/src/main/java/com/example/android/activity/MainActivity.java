@@ -32,19 +32,15 @@ public class MainActivity extends AppCompatActivity {
     public static final String adminRole = "adminKey";
     SharedPreferences sharedpreferences;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.i(TAG,"logB11");
-
     }
 
     public void goToPocetna(View view){
         EditText text = findViewById(R.id.inputEmail);
         String user = text.getText().toString();
-
         getKorisnikObject(user);
     }
 
@@ -52,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         (KorisniciApi.getClient().getKorisnickoIme(user)).enqueue(new Callback<List<Korisnici>>() {
             @Override
             public void onResponse(Call<List<Korisnici>> call, Response<List<Korisnici>> response) {
-                //Log.d("responseGET", response.body().get(0).getIme());
                 korisnickoIme = response.body();
                 proveriKorisnikObjekat();
             }
@@ -75,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void proveraKorisnika(){
-        String user1 =korisnickoIme.get(0).getKorisnickoIme();
         Log.d("username",korisnickoIme.get(0).getKorisnickoIme());
         EditText text = findViewById(R.id.inputPassword);
         if(text.getText().toString().equals(korisnickoIme.get(0).getLozinka())){
@@ -90,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         String userSave = korisnickoIme.get(0).getKorisnickoIme();
         String userSaveId = korisnickoIme.get(0).getId();
         Boolean userSaveAdminRole = korisnickoIme.get(0).getAdmin();
+        Log.d("rola", userSaveAdminRole.toString());
         sharedpreferences = getSharedPreferences(users_details, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString(korisnik, userSave);
@@ -104,26 +99,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void tapDroid() {
-        counter++;
-        String countAsText;
-        /*
-         * In real applications you should not write switch like the one below.
-         * Use resource of type "Quantity strings (plurals)" instead.
-         * See https://developer.android.com/guide/topics/resources/string-resource#Plurals
-         */
-        switch (counter) {
-            case 1:
-                countAsText = "once";
-                break;
-            case 2:
-                countAsText = "twice";
-                break;
-            default:
-                countAsText = String.format("%d times", counter);
-        }
-        message.setText(String.format("You touched the droid %s", countAsText));
-    }
 
     @Override
     protected void onStart() {

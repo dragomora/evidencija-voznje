@@ -2,8 +2,8 @@ package com.example.android.data.model;
 
 public enum SvrhaVoznje {
 
-    Službeno ("Poslovno"),
-    Privatno ("Privatno");
+    Službeno ("Službeno"),
+    Privatno ("Službeno");
 
     private final String svrha;
 
@@ -14,4 +14,10 @@ public enum SvrhaVoznje {
     public String getSvrha() {
         return svrha;
     }
+
+    @Override
+    public String toString(){
+        return this.getSvrha();
+    }
+
 }

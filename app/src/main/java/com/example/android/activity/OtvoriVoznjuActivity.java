@@ -55,7 +55,7 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otvori_voznju);
-        predjenokm = findViewById(R.id.predjenoKm);
+        predjenokm = findViewById(R.id.pocetnaKm);
         destinacija = findViewById(R.id.destinacija);
         svrhaVoznjeDropdown = findViewById(R.id.svrha_voznje_exposed_dropdown);
         stanjeVozilaDropdown = findViewById(R.id.stanje_vozila_exposed_dropdown);
@@ -75,8 +75,6 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
                 }
             }
         });
-
-
         getVozilaData();
         //getVoznjaData();
         setDataInSvrhaVoznjeDropDown();
@@ -87,9 +85,9 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
 
     public void goToPocetna(View view){
         Intent i = new Intent(this, PocetnaActivity.class);
+        finish();
         startActivity(i);
     }
-
 
     public void getVozilaData(){
         (VoziloApi.getClient().getVoziloList()).enqueue(new Callback<List<Vozilo>>() {
@@ -111,7 +109,6 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
         AutoCompleteTextView vozilaDropdown = findViewById(R.id.filled_exposed_dropdown);
         vozilaDropdown.setAdapter(voziloArrayAdapter);
         vozilaDropdown.setOnItemClickListener((adapterView, view, i, l) -> {
-            //TextInputLayout predjenokm = findViewById(R.id.predjenoKm);
             Objects.requireNonNull(predjenokm.getEditText()).setText(vozilaResponseData.get((int)l).getTrenutnaKm().toString());
             voziloId = voziloArrayAdapter.getItem(i).getId();
             Log.d("vozilo ID", voziloId);
@@ -120,10 +117,7 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
     }
 
     private void setDataInSvrhaVoznjeDropDown(){
-        //svrhaVoznje.add("POSLOVNO");
-        //svrhaVoznje.add("PRIVATNO");
         ArrayAdapter<SvrhaVoznje> svrhaVoznjeArrayAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.dropdown_menu_popup_item, SvrhaVoznje.values());
-        //AutoCompleteTextView svrhaVoznjeDropdown = findViewById(R.id.svrha_voznje_exposed_dropdown);
         svrhaVoznjeDropdown.setAdapter(svrhaVoznjeArrayAdapter);
         svrhaVoznjeDropdown.setText(SvrhaVoznje.Službeno.toString(),false);
     }
@@ -138,7 +132,7 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
     }
 
     public String getDate(LocalDateTime date){
-        return date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy.  HH:mm:ss"));
+        return date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy.  HH:mm"));
     }
 
 
@@ -149,17 +143,12 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
     }
 
     private void setDataInKorisnik(){
-        //prefs = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
-        //String korisnikLogIn = prefs.getString("userKey",null);
         prefs = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
         String korisnikLogIn = prefs.getString("userKey",null);
-
         TextInputLayout korisnik = findViewById(R.id.korisnik);
         Objects.requireNonNull(korisnik.getEditText()).setText(korisnikLogIn);
         korisnik.getEditText().setInputType(InputType.TYPE_NULL);
-
     }
-
 
     public void getVoznjaData(){
         (VoznjaApi.getClient().getVoznjaList()).enqueue(new Callback<List<Voznja>>() {
@@ -197,7 +186,7 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
             //String stanjeVozilaTxt = stanjeVozilaDropdown.getText().toString();
             StanjeVozila stanjeVozila = StanjeVozila.valueOf(stanjeVozilaDropdown.getText().toString());
             String dt = vreme_pocetka_voznje.getEditText().getText().toString();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.  HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.  HH:mm");
             Date test = sdf.parse(dt);
             //LocalDateTime datum = LocalDateTime.parse(dt,DateTimeFormatter.ofPattern("dd.MM.yyyy.  HH:mm:ss"));
             String napomenaTxt = napomena.getEditText().getText().toString();
@@ -211,13 +200,12 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
                 @Override
 
                 public void onResponse(Call<Voznja> call, Response<Voznja> response) {
-
+                    String x =Integer.toString(response.code());
+                    Log.d("HTTP RETURN CODE: ",x);
                     Toast.makeText(OtvoriVoznjuActivity.this, "Voznja je uspešno otvorena!", Toast.LENGTH_LONG).show();
                     assert response.body() != null;
-                    String uid = response.body().getId();
-                    Log.d("test","UID= "+uid);
-
-
+                    //String uid = response.body().getId();
+                    //Log.d("test","UID= "+uid);
                 }
 
                 @Override
@@ -230,18 +218,7 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
         spinner.setVisibility(View.GONE);
         goToPocetna(view);
     }
-
-    public void updateVoziloKorisnik(){
-
-    }
-
-
-
-
-
 }
-
-
 
 /*
     private void setDataInSpinner(){

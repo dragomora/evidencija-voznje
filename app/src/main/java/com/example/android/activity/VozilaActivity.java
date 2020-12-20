@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.android.R;
 import com.example.android.data.adapter.KorisniciAdapter;
 import com.example.android.data.adapter.VozilaAdapter;
+import com.example.android.data.adapter.VoznjaAdapter;
 import com.example.android.data.api.KorisniciApi;
 import com.example.android.data.api.VoziloApi;
 import com.example.android.data.model.Korisnici;
@@ -26,40 +27,30 @@ import java.util.List;
 public class VozilaActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    List<Vozilo> vozilaResponseData;
+    List<Vozilo> vozilaList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spisak_vozila);
-        recyclerView = (RecyclerView) findViewById(R.id.rviewListaVozila);
         getVozilaData();
-        //String[] foods = {"Bacon","Ham"};
-        //ListAdapter spisakVozilaAdapter = new ArrayAdapter<String>(this, R.layout.list_view_text_items,foods);
-        //ListView listSpisakVozila = (ListView) findViewById(R.id.listSpisakVozila);
-        //listSpisakVozila.setAdapter(spisakVozilaAdapter);
+        recyclerView=findViewById(R.id.rviewListaVozila);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
     public void getVozilaData(){
-        // display a progress dialog
-/*
-        final ProgressDialog progressDialog;
-        progressDialog = new ProgressDialog(VozilaActivity.this);
-        progressDialog.setCancelable(false); // set cancelable to false
-        progressDialog.setMessage("Please Wait"); // set message
-        progressDialog.show(); // show progress dialog
-*/
 
         (VoziloApi.getClient().getVoziloList()).enqueue(new Callback<List<Vozilo>>() {
             @Override
             public void onResponse(Call<List<Vozilo>> call, Response<List<Vozilo>> response) {
                 Log.d("responseGET", response.body().get(0).getNaziv());
-                //progressDialog.dismiss(); //dismiss progress dialog
-                vozilaResponseData = response.body();
+                vozilaList = response.body();
                 setDataInRecyclerView();
-                
             }
 
             @Override
@@ -71,13 +62,9 @@ public class VozilaActivity extends AppCompatActivity {
         });
     }
 
-    private void setDataInRecyclerView(){
-        // set a LinearLayoutManager with default vertical orientation
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(VozilaActivity.this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        // call the constructor of UsersAdapter to send the reference and data to Adapter
-        VozilaAdapter vozilaAdapter = new VozilaAdapter(VozilaActivity.this, vozilaResponseData);
-        recyclerView.setAdapter(vozilaAdapter); // set the Adapter to RecyclerView
+    public void setDataInRecyclerView(){
+        VozilaAdapter adapter = new VozilaAdapter(this,vozilaList);
+        recyclerView.setAdapter(adapter);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -88,7 +75,6 @@ public class VozilaActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }

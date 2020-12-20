@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#262728"
+    android:background="#001A2E"
     tools:context=".activity.MainActivity">
 
     <TextView
@@ -32,7 +32,7 @@
         android:textColorHint="#7F7F7F"
         app:backgroundTint="@color/blue_gray_light"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/text_input_outline_color"
+        app:boxStrokeColor="@color/text_view"
         app:hintTextColor="#D6D6D6"
         app:layout_constraintBottom_toTopOf="@id/HBguideEmail"
         app:layout_constraintEnd_toEndOf="@id/VRguideView"
@@ -44,6 +44,7 @@
             android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:backgroundTint="#192730"
             android:textColor="#D2CCCC"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -75,7 +76,7 @@
         android:textColorHint="#7F7F7F"
         app:backgroundTint="@color/blue_gray_light"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/text_input_outline_color"
+        app:boxStrokeColor="@color/text_view"
         app:endIconMode="password_toggle"
         app:endIconTint="@color/blue_gray_light"
         app:hintTextColor="#D6D6D6"
@@ -99,10 +100,13 @@
         android:id="@+id/buttonLogin"
         android:layout_width="180dp"
         android:layout_height="55dp"
+        android:backgroundTint="#1f3747"
+        android:elevation="6dp"
         android:onClick="goToPocetna"
         android:text="@string/btnText"
-        app:backgroundTint="#4E4D4D"
+        app:backgroundTintMode="src_atop"
         app:cornerRadius="18dp"
+        app:elevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,41 +131,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.06" />
+        app:layout_constraintGuide_percent="0.04" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/HTguideEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.19" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/HBguideEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.29" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/HTguidePass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.34" />
+        app:layout_constraintGuide_percent="0.3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/HBguidePass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.44" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/HTguidePrijaviSe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.58" />
+        app:layout_constraintGuide_percent="0.45" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,10 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:state_enabled="false"
-        android:color="#CECECE"
+        android:color="#2d5e7f"
         />
     <item
         android:state_enabled="true"
-        android:color="#CECECE"
+        android:color="#cecece"
         />
 </selector>

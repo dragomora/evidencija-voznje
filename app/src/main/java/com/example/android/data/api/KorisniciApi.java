@@ -1,23 +1,19 @@
 package com.example.android.data.api;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.view.View;
 import com.example.android.data.Interface.korisniciInt;
 import com.example.android.data.model.Korisnici;
-import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.List;
 public class KorisniciApi {
-    SharedPreferences prefs;
-
-
 
     private static Retrofit retrofit = null;
+
+    public KorisniciApi() {
+    }
+
     public static korisniciInt getClient(){
         if(retrofit==null){
             retrofit = new Retrofit.Builder()
@@ -28,9 +24,7 @@ public class KorisniciApi {
         return retrofit.create(korisniciInt.class);
     }
 
-    public void getKorisnik(Callback<List<Korisnici>> callback,View view){
-        prefs = view.getContext().getSharedPreferences("Prefs", Context.MODE_PRIVATE);
-        String user = prefs.getString("userKey",null);
+    public void getKorisnikObjectById(Callback<List<Korisnici>> callback,String user){
         KorisniciApi.getClient().getKorisnickoIme(user).enqueue(callback);
     }
 

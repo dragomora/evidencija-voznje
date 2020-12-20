@@ -5,7 +5,7 @@
     style="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00213B"
+    android:background="#001A2E"
     tools:context=".activity.OtvoriVoznjuActivity">
 
 
@@ -123,7 +123,7 @@
         android:layout_height="wrap_content"
         android:inputType="textNoSuggestions"
         android:textColorHint="#8d8a8a"
-        app:boxStrokeColor="#fff"
+        app:boxStrokeColor="@color/text_view"
         app:endIconTint="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/VRguideTopMenu"
         app:layout_constraintStart_toStartOf="@+id/VLguideTopMenu"
@@ -134,6 +134,7 @@
             android:id="@+id/filled_exposed_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
             android:focusable="false"
             android:hint="@string/hintVozilo"
             android:inputType="textNoSuggestions"
@@ -144,7 +145,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/predjenoKm"
+        android:id="@+id/pocetnaKm"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -214,7 +215,7 @@
         app:endIconTint="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/VViewHalf"
         app:layout_constraintStart_toStartOf="@+id/VLguideTopMenu"
-        app:layout_constraintTop_toBottomOf="@+id/predjenoKm">
+        app:layout_constraintTop_toBottomOf="@+id/pocetnaKm">
         <!--        app:hintTextColor="#D6D6D6">-->
 
         <AutoCompleteTextView
@@ -243,7 +244,7 @@
         app:endIconTint="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/VRguideTopMenu"
         app:layout_constraintStart_toStartOf="@+id/VViewHalf"
-        app:layout_constraintTop_toBottomOf="@+id/predjenoKm">
+        app:layout_constraintTop_toBottomOf="@+id/pocetnaKm">
         <!--        app:hintTextColor="#D6D6D6">-->
 
         <AutoCompleteTextView

@@ -12,6 +12,8 @@ public class Korisnici {
     private String korisnickoIme;
     private String lozinka;
     private String otvorenaVoznjaId;
+    private boolean expanded;
+
     private Map<String,Object> additionalProperties = new HashMap<String,Object>();
 
     public String getId() {
@@ -60,6 +62,25 @@ public class Korisnici {
 
     public void setLozinka(String lozinka) {
         this.lozinka = lozinka;
+    }
+
+    public boolean isExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
+    }
+
+    public Korisnici(String id, String ime, String prezime, Boolean admin, String korisnickoIme, String lozinka, String otvorenaVoznjaId) {
+        this.id = id;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.admin = admin;
+        this.korisnickoIme = korisnickoIme;
+        this.lozinka = lozinka;
+        this.otvorenaVoznjaId = otvorenaVoznjaId;
+        this.expanded = false;
     }
 
     public String getOtvorenaVoznjaId() {
