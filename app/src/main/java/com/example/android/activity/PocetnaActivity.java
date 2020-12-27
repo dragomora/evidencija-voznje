@@ -1,8 +1,10 @@
 package com.example.android.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,17 +12,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
+
 import com.example.android.R;
 import com.example.android.data.api.KorisniciApi;
 import com.example.android.data.model.Korisnici;
+
+import java.util.List;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import java.util.List;
 
 public class PocetnaActivity extends AppCompatActivity {
     SharedPreferences prefs;
@@ -75,13 +79,12 @@ public class PocetnaActivity extends AppCompatActivity {
         finish();
     }
 
-
     public void goToOtvoriVoznju(View view){
         i = new Intent(this, OtvoriVoznjuActivity.class);
         Log.d("Voznja ID",otvorenaVoznja);
         if(otvorenaVoznja.isEmpty()){
             startActivity(i);
-            finish();
+            //finish();
         }
         else{
             Toast.makeText(PocetnaActivity.this, "Već imate otvorenu vožnju! \n Morate zatvoriti vožnju ID= "+ otvorenaVoznja, Toast.LENGTH_LONG).show();
@@ -112,7 +115,7 @@ public class PocetnaActivity extends AppCompatActivity {
         }
         else{
             startActivity(i);
-            finish();
+            //finish();
         }
     }
 
@@ -123,9 +126,27 @@ public class PocetnaActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
 
+    @Override
+    public void onBackPressed() { 
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Izlaz")
+                .setMessage("Da li želite da ugasite aplikaciju?")
+                .setPositiveButton("Da", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finishAffinity();
+                        System.exit(0);
+                    }
 
+                })
+                .setNegativeButton("Ne", null)
+                .show();
+    }
 }
