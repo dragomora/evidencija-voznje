@@ -143,15 +143,15 @@
                         android:layout_marginTop="2dp">
 
                         <TextView
-                            android:id="@+id/saobracajnaVaziDo"
+                            android:id="@+id/vazenjeDozvole"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Važenje saobraćajne:"
+                            android:text="Važenje vozačke:"
                             android:textAlignment="textEnd"
                             android:textColor="@color/text_view" />
 
                         <TextView
-                            android:id="@+id/txtSaobracajnaVaziDo"
+                            android:id="@+id/txtVazenjeVozacke"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="10dp"

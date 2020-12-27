@@ -72,6 +72,7 @@ public class PocetnaActivity extends AppCompatActivity {
     public void goToAdmin(View view){
         Intent i = new Intent(this, AdminActivity.class);
         startActivity(i);
+        finish();
     }
 
 
@@ -80,6 +81,7 @@ public class PocetnaActivity extends AppCompatActivity {
         Log.d("Voznja ID",otvorenaVoznja);
         if(otvorenaVoznja.isEmpty()){
             startActivity(i);
+            finish();
         }
         else{
             Toast.makeText(PocetnaActivity.this, "Već imate otvorenu vožnju! \n Morate zatvoriti vožnju ID= "+ otvorenaVoznja, Toast.LENGTH_LONG).show();
@@ -96,6 +98,7 @@ public class PocetnaActivity extends AppCompatActivity {
         }
         else{
             startActivity(i);
+            finish();
         }
     }
 
@@ -109,14 +112,14 @@ public class PocetnaActivity extends AppCompatActivity {
         }
         else{
             startActivity(i);
+            finish();
         }
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

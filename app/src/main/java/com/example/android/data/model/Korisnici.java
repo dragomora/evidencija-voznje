@@ -1,5 +1,6 @@
 package com.example.android.data.model;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ public class Korisnici {
     private String korisnickoIme;
     private String lozinka;
     private String otvorenaVoznjaId;
+    private Date vazenjeDozvole;
     private boolean expanded;
 
     private Map<String,Object> additionalProperties = new HashMap<String,Object>();
@@ -23,6 +25,10 @@ public class Korisnici {
     public void setId(String id) {
         this.id = id;
     }
+
+    public Date getVazenjeDozvole() { return vazenjeDozvole; }
+
+    public void setVazenjeDozvole(Date vazenjeDozvole) { this.vazenjeDozvole = vazenjeDozvole; }
 
     public String getIme() {
         return ime;
@@ -72,7 +78,7 @@ public class Korisnici {
         this.expanded = expanded;
     }
 
-    public Korisnici(String id, String ime, String prezime, Boolean admin, String korisnickoIme, String lozinka, String otvorenaVoznjaId) {
+    public Korisnici(String id, String ime, String prezime, Boolean admin, String korisnickoIme, String lozinka, String otvorenaVoznjaId, Date vazenjeDozvole) {
         this.id = id;
         this.ime = ime;
         this.prezime = prezime;
@@ -81,6 +87,7 @@ public class Korisnici {
         this.lozinka = lozinka;
         this.otvorenaVoznjaId = otvorenaVoznjaId;
         this.expanded = false;
+        this.vazenjeDozvole = vazenjeDozvole;
     }
 
     public String getOtvorenaVoznjaId() {

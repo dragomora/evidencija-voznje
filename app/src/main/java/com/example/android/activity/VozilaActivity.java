@@ -18,10 +18,12 @@ import com.example.android.data.api.KorisniciApi;
 import com.example.android.data.api.VoziloApi;
 import com.example.android.data.model.Korisnici;
 import com.example.android.data.model.Vozilo;
+import org.json.JSONObject;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.util.Date;
 import java.util.List;
 
 public class VozilaActivity extends AppCompatActivity {
@@ -45,11 +47,13 @@ public class VozilaActivity extends AppCompatActivity {
     }
     public void getVozilaData(){
 
-        (VoziloApi.getClient().getVoziloList()).enqueue(new Callback<List<Vozilo>>() {
+        (VoziloApi.getClient().getVoziloSum()).enqueue(new Callback<List<Vozilo>>() {
             @Override
             public void onResponse(Call<List<Vozilo>> call, Response<List<Vozilo>> response) {
-                Log.d("responseGET", response.body().get(0).getNaziv());
+                //Log.d("responseGET", response.body().get(0).getNaziv());
                 vozilaList = response.body();
+                Date date = vozilaList.get(0).getSum().get(0).getDatumRegistracije();
+                Log.d("hakaddd",date.toString());
                 setDataInRecyclerView();
             }
 

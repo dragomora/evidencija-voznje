@@ -7,33 +7,24 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.android.R;
-import com.example.android.data.adapter.VozilaAdapter;
-import com.example.android.data.api.VoziloApi;
 import com.example.android.data.api.VoznjaApi;
 import com.example.android.data.model.StanjeVozila;
-import com.example.android.data.model.SvrhaVoznje;
 import com.example.android.data.model.Vozilo;
 import com.example.android.data.model.Voznja;
 import com.google.android.material.textfield.TextInputLayout;
-import org.json.JSONException;
-import org.json.JSONObject;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -64,10 +55,7 @@ public class ZatvoriVoznjuActivity extends AppCompatActivity{
     TextInputLayout napomena;
     Voznja voznja;
     OtvoriVoznjuActivity ov = new OtvoriVoznjuActivity();
-
     private ProgressBar spinner;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +89,12 @@ public class ZatvoriVoznjuActivity extends AppCompatActivity{
 
         getVoznjaIdData();
         //setDataInKorisnik();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     public void goToPocetna(View view){
@@ -180,8 +174,6 @@ public class ZatvoriVoznjuActivity extends AppCompatActivity{
     }
 
     public void zatvoriVoznja(View view) throws ParseException {
-
-
         zavrsnaKmData = zavsnakm.getEditText().getText().toString();
         if(zavrsnaKmData.isEmpty()){
             Toast.makeText(ZatvoriVoznjuActivity.this, "Morate uneti završnu kilometražu!", Toast.LENGTH_LONG).show();
@@ -203,7 +195,8 @@ public class ZatvoriVoznjuActivity extends AppCompatActivity{
 
                 @Override
                 public void onResponse(Call<Voznja> call, Response<Voznja> response) {
-                    Toast.makeText(ZatvoriVoznjuActivity.this, "Voznja je uspešno otvorena!", Toast.LENGTH_LONG).show();
+                    String status = Integer.toString(response.code());
+                    Toast.makeText(ZatvoriVoznjuActivity.this, "Voznja je uspešno zatvorena!\n" + "HTTP STATUS= " + status, Toast.LENGTH_LONG).show();
                     assert response.body() != null;
                 }
                 @Override
@@ -212,23 +205,9 @@ public class ZatvoriVoznjuActivity extends AppCompatActivity{
                 }
             });
         }
-
         spinner.setVisibility(View.GONE);
         goToPocetna(view);
     }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return true;
-    }
-
 }
 
 

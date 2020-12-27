@@ -27,7 +27,4 @@ public class KorisniciApi {
     public void getKorisnikObjectById(Callback<List<Korisnici>> callback,String user){
         KorisniciApi.getClient().getKorisnickoIme(user).enqueue(callback);
     }
-
-
-
 }

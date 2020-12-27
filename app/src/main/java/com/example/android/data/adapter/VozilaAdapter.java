@@ -1,6 +1,7 @@
 package com.example.android.data.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.android.R;
 import com.example.android.data.model.Korisnici;
+import com.example.android.data.model.Sum;
 import com.example.android.data.model.Vozilo;
 import com.example.android.data.model.Voznja;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,6 +34,7 @@ public class VozilaAdapter extends RecyclerView.Adapter <VozilaAdapter.VozilaVie
 
     private Context context;
     private List<Vozilo> vozilaList;
+
     public VozilaAdapter(Context context, List<Vozilo> vozilaList){
         this.context = context;
         this.vozilaList = vozilaList;
@@ -42,7 +48,7 @@ public class VozilaAdapter extends RecyclerView.Adapter <VozilaAdapter.VozilaVie
     }
 
     class VozilaViewHolder extends RecyclerView.ViewHolder{
-        TextView txtNaslov, txtPodnaslov, txtRegistracija,txtServisniInterval,txtDoServisaKm,txtTrenutnoKm;
+        TextView txtNaslov, txtPodnaslov, txtRegistracija,txtServisniInterval,txtDoServisaKm,txtTrenutnoKm,txtUkupnoPredjenoKm,txtUkupnoLitara,txtUkupanIznosGorivo;
         CardView card;
         ConstraintLayout cardDodatak;
         Button arrowBtn;
@@ -57,6 +63,9 @@ public class VozilaAdapter extends RecyclerView.Adapter <VozilaAdapter.VozilaVie
             txtServisniInterval = itemView.findViewById(R.id.txtServisniInterval);
             txtDoServisaKm = itemView.findViewById(R.id.txtDoServisaKm);
             txtTrenutnoKm = itemView.findViewById(R.id.txtTrenutnoKm);
+            txtUkupnoPredjenoKm = itemView.findViewById(R.id.txtUkupnoPredjenoKm);
+            txtUkupnoLitara = itemView.findViewById(R.id.txtUkupnoLitara);
+            txtUkupanIznosGorivo = itemView.findViewById(R.id.txtUkupanIznosGorivo);
 
 
             itemView.setOnClickListener(view -> {
@@ -72,8 +81,20 @@ public class VozilaAdapter extends RecyclerView.Adapter <VozilaAdapter.VozilaVie
     }
 
     public void onBindViewHolder(VozilaAdapter.VozilaViewHolder holder, int position){
-        Vozilo vozilo = vozilaList.get(position);
-        date = vozilo.getDatum_registracije();
+        //Vozilo vozilo = vozilaList.get(position);
+        Vozilo voz = vozilaList.get(position);
+        Sum vozilo = voz.getSum().get(0);
+        date = vozilo.getDatumRegistracije();
+        //date = vozilo.getDatum_registracije();
+
+/*
+        try {
+            jsonObject = new JSONObject(test.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+*/
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.  HH:mm");
         dateTime = sdf.format(date);
         boolean zauzeto = vozilo.getZauzeto();
@@ -90,6 +111,9 @@ public class VozilaAdapter extends RecyclerView.Adapter <VozilaAdapter.VozilaVie
         holder.txtDoServisaKm.setText((Integer.toString( doServisa)));
         holder.txtTrenutnoKm.setText(Integer.toString(trenutnaKm));
         boolean isExpanded = vozilaList.get(position).isExpanded();
+        holder.txtUkupnoPredjenoKm.setText(voz.getPredjeno_km() + " km");
+        holder.txtUkupnoLitara.setText((voz.getUkupnoLitara())+ " l");
+        holder.txtUkupanIznosGorivo.setText(voz.getUkupanIznosLitara() + " RSD");
 
         holder.cardDodatak.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
         holder.arrowBtn.setBackgroundResource(isExpanded ? (R.drawable.ic_keyboard_arrow_up_black_24dp):(R.drawable.ic_keyboard_arrow_down_black_24dp));

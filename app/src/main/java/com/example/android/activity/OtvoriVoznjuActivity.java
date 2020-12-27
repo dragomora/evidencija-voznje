@@ -22,7 +22,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -49,8 +48,6 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
     TextInputLayout napomena;
     private ProgressBar spinner;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +73,6 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
             }
         });
         getVozilaData();
-        //getVoznjaData();
         setDataInSvrhaVoznjeDropDown();
         setDataInStanjeVozilaDropDown();
         setDateinVremePocetkaVoznje();
@@ -112,7 +108,6 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
             Objects.requireNonNull(predjenokm.getEditText()).setText(vozilaResponseData.get((int)l).getTrenutnaKm().toString());
             voziloId = voziloArrayAdapter.getItem(i).getId();
             Log.d("vozilo ID", voziloId);
-
         });
     }
 
@@ -123,10 +118,7 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
     }
 
     private void setDataInStanjeVozilaDropDown(){
-        //stanjeVozila.add("NEOŠTEĆENO");
-        //stanjeVozila.add("OŠTEĆENO");
         ArrayAdapter<StanjeVozila> stanjeVozilaArrayAdapter = new ArrayAdapter<StanjeVozila>(getApplicationContext(), R.layout.dropdown_menu_popup_item, StanjeVozila.values());
-        //AutoCompleteTextView stanjeVozilaDropdown = findViewById(R.id.stanje_vozila_exposed_dropdown);
         stanjeVozilaDropdown.setAdapter(stanjeVozilaArrayAdapter);
         stanjeVozilaDropdown.setText(StanjeVozila.Neoštećeno.toString(),false);
     }
@@ -135,9 +127,7 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
         return date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy.  HH:mm"));
     }
 
-
     private void setDateinVremePocetkaVoznje(){
-        //TextInputLayout vreme_pocetka_voznje = findViewById(R.id.vreme_pocetka_voznje);
         Objects.requireNonNull(vreme_pocetka_voznje.getEditText()).setText(getDate(date));
         vreme_pocetka_voznje.getEditText().setInputType(InputType.TYPE_NULL);
     }
@@ -150,12 +140,12 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
         korisnik.getEditText().setInputType(InputType.TYPE_NULL);
     }
 
+/*
     public void getVoznjaData(){
         (VoznjaApi.getClient().getVoznjaList()).enqueue(new Callback<List<Voznja>>() {
             @Override
             public void onResponse(Call<List<Voznja>> call, Response<List<Voznja>> response) {
                 assert response.body() != null;
-                //Log.d("responseGET", response.body().get(0).getKorisnikId().getIme());
                 voznjaResponseData = response.body();
                 setDataInVoziloDropDown();
             }
@@ -166,10 +156,9 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
             }
         });
     }
+*/
 
     public void postVoznja(View view) throws ParseException {
-
-
         prefs = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
         String korisnikLogInId = prefs.getString("idKey",null);
         String pocetnaKm = predjenokm.getEditText().getText().toString();
@@ -191,8 +180,6 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
             //LocalDateTime datum = LocalDateTime.parse(dt,DateTimeFormatter.ofPattern("dd.MM.yyyy.  HH:mm:ss"));
             String napomenaTxt = napomena.getEditText().getText().toString();
             Boolean pranje = false;
-            //(Date pocetakVoznje, Integer pocetnaKm, Integer zavrsnaKm, Integer predjenoKm, Date krajVoznje, String korisnik_Id, String voziloId, String napomena, boolean pranje) {
-
             Voznja voznja = new Voznja(test, pocetnaKmInt, zavrsnaKm, predjenoKm, krajVoznje, korisnikLogInId, voziloId, napomenaTxt,dest,svrha,stanjeVozila, pranje);
             Call<Voznja> call = VoznjaApi.getClient().createVoznja(voznja);
             call.enqueue(new Callback<Voznja>() {
@@ -200,23 +187,22 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
                 @Override
 
                 public void onResponse(Call<Voznja> call, Response<Voznja> response) {
-                    String x =Integer.toString(response.code());
-                    Log.d("HTTP RETURN CODE: ",x);
-                    Toast.makeText(OtvoriVoznjuActivity.this, "Voznja je uspešno otvorena!", Toast.LENGTH_LONG).show();
+                    String status = Integer.toString(response.code());
+                    Log.d("HTTP RETURN CODE: ",status);
+                    Toast.makeText(OtvoriVoznjuActivity.this, "Voznja je uspešno otvorena!\n" + "HTTP STATUS= " + status , Toast.LENGTH_LONG).show();
                     assert response.body() != null;
-                    //String uid = response.body().getId();
-                    //Log.d("test","UID= "+uid);
                 }
 
                 @Override
                 public void onFailure(Call<Voznja> call, Throwable t) {
-                    Log.d("testme", "Error: " + t.toString());
+                    Log.d("Došlo je do greške!", "Error: " + t.toString());
                 }
             });
         }
 
         spinner.setVisibility(View.GONE);
         goToPocetna(view);
+        finish();
     }
 }
 

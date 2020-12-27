@@ -15,7 +15,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -30,7 +29,6 @@ public class GorivoActivity extends AppCompatActivity {
     Integer litre;
     String vrsta;
     private ProgressBar spinner;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +47,6 @@ public class GorivoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 spinner.setVisibility(View.VISIBLE);
-
                 try {
                     postGorivo(view);
                 } catch (ParseException e) {
@@ -57,10 +54,7 @@ public class GorivoActivity extends AppCompatActivity {
                 }
             }
         });
-
-
         setDataInVrstaGoriva();
-
     }
 
     public void goToPocetna(View view){
@@ -103,9 +97,6 @@ public class GorivoActivity extends AppCompatActivity {
                     Toast.makeText(GorivoActivity.this, "Sipanje goriva je uspešno zabeleženo!", Toast.LENGTH_LONG).show();
                     assert response.body() != null;
                     goToPocetna(view);
-
-                    //String uid = response.body().getId();
-                    //Log.d("test","UID= "+uid);
                 }
 
                 @Override
@@ -113,7 +104,6 @@ public class GorivoActivity extends AppCompatActivity {
                     Log.d("testme", "Error: " + t.toString());
                 }
             });
-
         }
     }
 }

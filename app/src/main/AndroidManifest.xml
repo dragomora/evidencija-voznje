@@ -12,16 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.VoznjaActivity"></activity>
+        <activity android:name=".activity.VoznjaActivity" />
         <activity android:name=".activity.AdminActivity" />
         <activity android:name=".activity.GorivoActivity" />
         <activity android:name=".activity.OtvoriVoznjuActivity" />
         <activity android:name=".activity.ZatvoriVoznjuActivity" />
         <activity android:name=".activity.KorisniciActivity" />
         <activity android:name=".activity.VozilaActivity" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
         <activity android:name=".activity.PocetnaActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>

@@ -13,6 +13,7 @@ import com.example.android.R;
 import com.example.android.data.model.Korisnici;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class KorisniciAdapter extends RecyclerView.Adapter <KorisniciAdapter.Kor
     }
 
     class KorisniciViewHolder extends RecyclerView.ViewHolder{
-        TextView txtNaslov, txtPodnaslov, txtAdminRole, txtSaobracajnaVaziDo, txtOtvorenaVoznjaId, txtKorisnikId;
+        TextView txtNaslov, txtPodnaslov, txtAdminRole, txtSaobracajnaVaziDo, txtOtvorenaVoznjaId, txtKorisnikId, txtVazenjeDozvole;
         CardView cardView;
         ConstraintLayout cardDodatak;
         Button arrowBtn;
@@ -45,10 +46,9 @@ public class KorisniciAdapter extends RecyclerView.Adapter <KorisniciAdapter.Kor
             txtNaslov = itemView.findViewById(R.id.txtNaslov);
             txtPodnaslov = itemView.findViewById(R.id.txtPodnaslov);
             txtAdminRole = itemView.findViewById(R.id.txtAdminRole);
-            txtSaobracajnaVaziDo = itemView.findViewById(R.id.txtSaobracajnaVaziDo);
+            txtVazenjeDozvole = itemView.findViewById(R.id.txtVazenjeVozacke);
             txtOtvorenaVoznjaId = itemView.findViewById(R.id.txtOtvorenaVoznjaId);
             txtKorisnikId = itemView.findViewById(R.id.txtKorisnikId);
-
             itemView.setOnClickListener(view -> {
                 Korisnici korisnici = korisniciList.get(getAdapterPosition());
                 korisnici.setExpanded(!korisnici.isExpanded());
@@ -60,13 +60,16 @@ public class KorisniciAdapter extends RecyclerView.Adapter <KorisniciAdapter.Kor
     @Override
     public void  onBindViewHolder(KorisniciAdapter.KorisniciViewHolder holder, final int position) {
         Korisnici korisnici = korisniciList.get(position);
+        date = korisnici.getVazenjeDozvole();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
+        dateTime = sdf.format(date);
         String ime = korisnici.getIme();
         String prezime= korisnici.getPrezime();
         String korisnickoIme = korisnici.getKorisnickoIme();
         boolean admin = korisnici.getAdmin();
         String voznja = korisnici.getOtvorenaVoznjaId();
         String adminStatus = admin ? " NE" : " DA";
-        String voznjaStatus = voznja.isEmpty() ? "Ima aktivnu vožnju" : "Nema aktivnu vožnju";
+        String voznjaStatus = voznja.isEmpty() ? "Nema aktivnu vožnju" : "Ima aktivnu vožnju";
 
         holder.txtNaslov.setText(ime + " "+ prezime + " (" + korisnickoIme + ")");
     holder.txtPodnaslov.setText("Status: " + voznjaStatus);
@@ -74,7 +77,7 @@ public class KorisniciAdapter extends RecyclerView.Adapter <KorisniciAdapter.Kor
     holder.txtOtvorenaVoznjaId.setText(korisnici.getOtvorenaVoznjaId());
     holder.txtKorisnikId.setText(korisnici.getKorisnickoIme());
     boolean isExpanded = korisniciList.get(position).isExpanded();
-
+    holder.txtVazenjeDozvole.setText(dateTime);
     holder.cardDodatak.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
     holder.arrowBtn.setBackgroundResource(isExpanded ? (R.drawable.ic_keyboard_arrow_up_black_24dp):(R.drawable.ic_keyboard_arrow_down_black_24dp));
 
