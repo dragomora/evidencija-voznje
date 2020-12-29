@@ -1,25 +1,28 @@
 package com.example.android.activity;
 
-import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.android.R;
 import com.example.android.data.adapter.KorisniciAdapter;
-import com.example.android.data.model.Korisnici;
 import com.example.android.data.api.KorisniciApi;
+import com.example.android.data.model.Korisnici;
+
+import java.util.List;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import java.util.List;
 
 public class KorisniciActivity extends AppCompatActivity {
 
@@ -39,7 +42,17 @@ public class KorisniciActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        Button btnBack = findViewById(R.id.buttonBack);
+        btnBack.setOnClickListener(this::onBackBtn);
     }
+
+    private void onBackBtn(View view) {
+        Intent i = new Intent(this, AdminActivity.class);
+        startActivity(i);
+        finish();
+    }
+
     private void getKorisniciData(){
         (KorisniciApi.getClient().getUserList()).enqueue(new Callback<List<Korisnici>>() {
             @Override
@@ -51,7 +64,7 @@ public class KorisniciActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Korisnici>> call, Throwable t) {
-// if error occurs in network transaction then we can get the error in this method.
+                // if error occurs in network transaction then we can get the error in this method.
                 Toast.makeText(KorisniciActivity.this, t.toString(), Toast.LENGTH_LONG).show();
             }
         });
@@ -76,4 +89,10 @@ public class KorisniciActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, AdminActivity.class);
+        startActivity(i);
+        finish();
+    }
 }

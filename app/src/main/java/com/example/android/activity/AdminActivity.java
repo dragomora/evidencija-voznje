@@ -1,13 +1,15 @@
 package com.example.android.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.android.R;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import com.example.android.R;
 
 
 public class AdminActivity extends AppCompatActivity {
@@ -50,6 +52,11 @@ public class AdminActivity extends AppCompatActivity {
         return true;
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, PocetnaActivity.class);
+        startActivity(i);
+        finish();
+    }
 
 }

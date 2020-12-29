@@ -2,11 +2,12 @@ package com.example.android.data.api;
 
 import com.example.android.data.Interface.korisniciInt;
 import com.example.android.data.model.Korisnici;
+
+import java.util.List;
+
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import java.util.List;
 public class KorisniciApi {
 
     private static Retrofit retrofit = null;
@@ -17,7 +18,7 @@ public class KorisniciApi {
     public static korisniciInt getClient(){
         if(retrofit==null){
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.0.15:8080/")
+                    .baseUrl("http://192.168.0.102:8080/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

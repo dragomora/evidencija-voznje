@@ -4,13 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
 import com.example.android.R;
 import com.example.android.data.api.VoziloApi;
 import com.example.android.data.api.VoznjaApi;
@@ -19,9 +22,7 @@ import com.example.android.data.model.SvrhaVoznje;
 import com.example.android.data.model.Vozilo;
 import com.example.android.data.model.Voznja;
 import com.google.android.material.textfield.TextInputLayout;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -30,6 +31,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class OtvoriVoznjuActivity extends AppCompatActivity{
@@ -60,6 +67,10 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
         napomena = findViewById(R.id.napomenaMultiLine);
         spinner = findViewById(R.id.progressCirc);
         spinner.setVisibility(View.GONE);
+
+        Button btnBack = findViewById(R.id.buttonBack);
+        btnBack.setOnClickListener(this::goToPocetna);
+
         Button postButton = findViewById(R.id.buttonPostVoznja);
         postButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,8 +92,8 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
 
     public void goToPocetna(View view){
         Intent i = new Intent(this, PocetnaActivity.class);
-        finish();
         startActivity(i);
+        finish();
     }
 
     public void getVozilaData(){
@@ -99,6 +110,7 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
             }
         });
     }
+
     private void setDataInVoziloDropDown(){
         ArrayAdapter<Vozilo> voziloArrayAdapter = new ArrayAdapter<Vozilo>(getApplicationContext(), R.layout.dropdown_menu_popup_item, vozilaResponseData);
         vozilaResponseData.removeIf(Vozilo::getZauzeto);
@@ -202,6 +214,13 @@ public class OtvoriVoznjuActivity extends AppCompatActivity{
 
         spinner.setVisibility(View.GONE);
         goToPocetna(view);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, PocetnaActivity.class);
+        startActivity(i);
         finish();
     }
 }

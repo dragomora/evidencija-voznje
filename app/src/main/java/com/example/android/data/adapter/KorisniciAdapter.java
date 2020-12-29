@@ -5,17 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.RecyclerView;
+import android.widget.TextView;
+
 import com.example.android.R;
 import com.example.android.data.model.Korisnici;
-import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class KorisniciAdapter extends RecyclerView.Adapter <KorisniciAdapter.KorisniciViewHolder> {
     Context context;
@@ -68,7 +69,7 @@ public class KorisniciAdapter extends RecyclerView.Adapter <KorisniciAdapter.Kor
         String korisnickoIme = korisnici.getKorisnickoIme();
         boolean admin = korisnici.getAdmin();
         String voznja = korisnici.getOtvorenaVoznjaId();
-        String adminStatus = admin ? " NE" : " DA";
+        String adminStatus = admin ? " DA" : " NE";
         String voznjaStatus = voznja.isEmpty() ? "Nema aktivnu vožnju" : "Ima aktivnu vožnju";
 
         holder.txtNaslov.setText(ime + " "+ prezime + " (" + korisnickoIme + ")");

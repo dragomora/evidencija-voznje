@@ -8,19 +8,17 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
 import com.example.android.R;
 import com.example.android.data.api.VoznjaApi;
 import com.example.android.data.model.StanjeVozila;
 import com.example.android.data.model.Vozilo;
 import com.example.android.data.model.Voznja;
 import com.google.android.material.textfield.TextInputLayout;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -28,6 +26,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class ZatvoriVoznjuActivity extends AppCompatActivity{
@@ -73,6 +78,9 @@ public class ZatvoriVoznjuActivity extends AppCompatActivity{
         spinner = findViewById(R.id.progressCirc);
         spinner.setVisibility(View.GONE);
 
+        Button btnBack = findViewById(R.id.buttonBack);
+        btnBack.setOnClickListener(this::goToPocetna);
+
         Button postButton = findViewById(R.id.buttonPostVoznja);
         postButton.setOnClickListener(view -> {
             spinner.setVisibility(View.VISIBLE);
@@ -99,8 +107,8 @@ public class ZatvoriVoznjuActivity extends AppCompatActivity{
 
     public void goToPocetna(View view){
         Intent i = new Intent(this, PocetnaActivity.class);
-        finish();
         startActivity(i);
+        finish();
     }
 
     public void getVoznjaIdData(){
@@ -207,6 +215,13 @@ public class ZatvoriVoznjuActivity extends AppCompatActivity{
         }
         spinner.setVisibility(View.GONE);
         goToPocetna(view);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, PocetnaActivity.class);
+        startActivity(i);
+        finish();
     }
 }
 

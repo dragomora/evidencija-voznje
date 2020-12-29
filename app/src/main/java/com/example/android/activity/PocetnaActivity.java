@@ -43,6 +43,11 @@ public class PocetnaActivity extends AppCompatActivity {
         prefs = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
         String korisnik = prefs.getString("userKey",null);
         ImageView adminCar = findViewById(R.id.imageView);
+        ImageView servisCar = findViewById(R.id.imgServis);
+        ImageView washCar = findViewById(R.id.imgPranje);
+
+        servisCar.setOnClickListener(this::underConstruction);
+        washCar.setOnClickListener(this::underConstruction);
 
         if (!prefs.getBoolean("adminKey", false)){
             bv.setVisibility(View.GONE);
@@ -73,6 +78,10 @@ public class PocetnaActivity extends AppCompatActivity {
 
     }
 
+    private void underConstruction(View view) {
+        Toast.makeText(PocetnaActivity.this, "Izrada u toku...", Toast.LENGTH_LONG).show();
+    }
+
     public void goToAdmin(View view){
         Intent i = new Intent(this, AdminActivity.class);
         startActivity(i);
@@ -84,10 +93,11 @@ public class PocetnaActivity extends AppCompatActivity {
         Log.d("Voznja ID",otvorenaVoznja);
         if(otvorenaVoznja.isEmpty()){
             startActivity(i);
-            //finish();
+            finish();
         }
         else{
-            Toast.makeText(PocetnaActivity.this, "Već imate otvorenu vožnju! \n Morate zatvoriti vožnju ID= "+ otvorenaVoznja, Toast.LENGTH_LONG).show();
+            Toast.makeText(PocetnaActivity.this, "Već imate otvorenu vožnju! \n Morate zatvoriti vožnju ID= "
+                    + otvorenaVoznja, Toast.LENGTH_LONG).show();
         }
     }
 

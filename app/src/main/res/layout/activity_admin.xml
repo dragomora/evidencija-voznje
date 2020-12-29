@@ -5,6 +5,7 @@
     android:id="@+id/main_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#001A2E"
     tools:layout_editor_absoluteX="1dp"
     tools:layout_editor_absoluteY="623dp">
 
@@ -15,54 +16,18 @@
         android:background="#001A2E"
         tools:context=".activity.AdminActivity">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAdmin"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="goToSpisakVozila"
-            android:text="@string/lista_vozila"
-            android:textSize="16sp"
-            app:backgroundTint="#1f3747"
-            app:cornerRadius="25dp"
-            app:layout_constraintEnd_toEndOf="@id/VRguideButtons"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/VLguideButtons"
-            app:layout_constraintTop_toBottomOf="@id/HTguideVozila" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnListaVoznji"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="goToListaVoznji"
-            android:text="@string/lista_voznji"
-            android:textSize="16sp"
-            app:backgroundTint="#1f3747"
-            app:cornerRadius="25dp"
-            app:layout_constraintEnd_toEndOf="@id/VRguideButtons"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/VLguideButtons"
-            app:layout_constraintTop_toTopOf="@+id/HTguideImg" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnListaKorisnika"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="goToSpisakKorisnika"
-            android:text="@string/lista_korisnika"
-            android:textSize="16sp"
-            app:backgroundTint="#1f3747"
-            app:cornerRadius="25dp"
-            app:layout_constraintEnd_toEndOf="@id/VRguideButtons"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/VLguideButtons"
-            app:layout_constraintTop_toTopOf="@+id/HTguideNovaVoznja3" />
-
+            android:layout_height="0dp"
+            android:layout_marginTop="80dp"
+            android:contentDescription="@string/imgPositive"
+            app:layout_constraintBottom_toTopOf="@+id/HTguideNovaVoznja"
+            app:layout_constraintEnd_toStartOf="@+id/VRguideButtons"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
+            app:layout_constraintTop_toBottomOf="@+id/btnListaKorisnika"
+            app:srcCompat="@drawable/top_car" />
 
         <TextView
             android:id="@+id/textNaslovAdmin"
@@ -81,19 +46,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="80dp"
-            android:contentDescription="@string/imgPositive"
-            app:layout_constraintBottom_toTopOf="@+id/HTguideNovaVoznja"
-            app:layout_constraintEnd_toStartOf="@+id/VRguideButtons"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
-            app:layout_constraintTop_toBottomOf="@+id/btnListaKorisnika"
-            app:srcCompat="@drawable/top_car" />
-
         <View
             android:id="@+id/divider"
             android:layout_width="0dp"
@@ -104,6 +56,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/HBguideEvidencijaVoznjeTxt" />
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/VLguideView"
@@ -184,6 +137,54 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.34" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAdmin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="goToSpisakVozila"
+            android:text="@string/lista_vozila"
+            android:textSize="16sp"
+            app:backgroundTint="#1f3747"
+            app:cornerRadius="25dp"
+            app:layout_constraintEnd_toEndOf="@id/VRguideButtons"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/VLguideButtons"
+            app:layout_constraintTop_toBottomOf="@id/HTguideVozila" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnListaVoznji"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="goToListaVoznji"
+            android:text="@string/lista_voznji"
+            android:textSize="16sp"
+            app:backgroundTint="#1f3747"
+            app:cornerRadius="25dp"
+            app:layout_constraintEnd_toEndOf="@id/VRguideButtons"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/VLguideButtons"
+            app:layout_constraintTop_toTopOf="@+id/HTguideImg" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnListaKorisnika"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="goToSpisakKorisnika"
+            android:text="@string/lista_korisnika"
+            android:textSize="16sp"
+            app:backgroundTint="#1f3747"
+            app:cornerRadius="25dp"
+            app:layout_constraintEnd_toEndOf="@id/VRguideButtons"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/VLguideButtons"
+            app:layout_constraintTop_toTopOf="@+id/HTguideNovaVoznja3" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,21 +1,27 @@
 package com.example.android.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.android.R;
 import com.example.android.data.adapter.VoznjaAdapter;
 import com.example.android.data.api.VoznjaApi;
 import com.example.android.data.model.Voznja;
+
+import java.util.List;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import java.util.List;
 
 public class VoznjaActivity extends AppCompatActivity {
     List<Voznja> voznjaList;
@@ -35,6 +41,15 @@ public class VoznjaActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        Button btnBack = findViewById(R.id.buttonBack);
+        btnBack.setOnClickListener(this::onBackBtn);
+    }
+
+    private void onBackBtn(View view) {
+        Intent i = new Intent(this, AdminActivity.class);
+        startActivity(i);
+        finish();
     }
 
     public void getVoznjaIdData(){
@@ -66,5 +81,12 @@ public class VoznjaActivity extends AppCompatActivity {
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, AdminActivity.class);
+        startActivity(i);
+        finish();
     }
 }

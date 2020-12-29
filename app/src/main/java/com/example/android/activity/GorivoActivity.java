@@ -3,20 +3,27 @@ package com.example.android.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
 import com.example.android.R;
 import com.example.android.data.api.GorivoApi;
 import com.example.android.data.model.Gorivo;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import java.text.ParseException;
-import java.util.ArrayList;
 
 public class GorivoActivity extends AppCompatActivity {
     private final ArrayList<String> vrstaGoriva = new ArrayList<>();
@@ -42,6 +49,9 @@ public class GorivoActivity extends AppCompatActivity {
         spinner = findViewById(R.id.progressCirc1);
         spinner.setVisibility(View.GONE);
 
+        Button btnBack = findViewById(R.id.buttonBack);
+        btnBack.setOnClickListener(this::goToPocetna);
+
         Button postButton = findViewById(R.id.buttonPostVoznja);
         postButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,8 +69,8 @@ public class GorivoActivity extends AppCompatActivity {
 
     public void goToPocetna(View view){
         Intent i = new Intent(this, PocetnaActivity.class);
-        finish();
         startActivity(i);
+        finish();
     }
 
     private void setDataInVrstaGoriva() {
@@ -105,5 +115,12 @@ public class GorivoActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, PocetnaActivity.class);
+        startActivity(i);
+        finish();
     }
 }

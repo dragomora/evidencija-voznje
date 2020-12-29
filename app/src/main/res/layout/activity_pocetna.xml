@@ -5,70 +5,83 @@
     android:id="@+id/main_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#001A2E"
     tools:layout_editor_absoluteX="1dp"
     tools:layout_editor_absoluteY="623dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="#001A2E"
         android:clickable="true"
         tools:context=".activity.PocetnaActivity">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAdmin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="#D50000"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="goToAdmin"
-            android:text="@string/buttonTextAdmin"
-            android:textSize="16sp"
-            app:cornerRadius="25dp"
-            app:layout_constraintEnd_toStartOf="@+id/VRguideButtons"
-            app:layout_constraintHorizontal_bias="0.484"
-            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
-            app:layout_constraintTop_toTopOf="@+id/HTguideZatvoriVoznju" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnOtvoriVoznju"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="#1f3747"
-            android:elevation="2dp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="goToOtvoriVoznju"
-            android:stateListAnimator="@null"
-            android:text="@string/btnNovaVoznja"
-            android:textSize="16sp"
-            app:cornerRadius="25dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/imgPositive"
+            app:layout_constraintBottom_toTopOf="@+id/guideline5"
+            app:layout_constraintEnd_toStartOf="@+id/VRguideButtons"
+            app:layout_constraintHorizontal_bias="0.583"
+            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
+            app:layout_constraintTop_toTopOf="@+id/HTguideVozila"
+            app:srcCompat="@drawable/top_car" />
+
+        <ImageView
+            android:id="@+id/imgGorivo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="Dolivanje goriva"
+            android:onClick="goToGorivo"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/HTguideZatvoriVoznju"
+            app:layout_constraintEnd_toStartOf="@+id/Vbutton12"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
+            app:layout_constraintTop_toTopOf="@+id/HTguideNovaVoznja"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/gas_station_colored_24" />
+
+
+        <ImageView
+            android:id="@+id/imgServis"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="Servis"
+            android:onClick="goToGorivo"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/HTguideZatvoriVoznju"
+            app:layout_constraintEnd_toStartOf="@+id/Vbutton23"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/Vbutton12"
+            app:layout_constraintTop_toTopOf="@+id/HTguideNovaVoznja"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/servis_colored_24" />
+
+        <ImageView
+            android:id="@+id/imgPranje"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/btnPranje"
+            android:onClick="goToGorivo"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/HTguideZatvoriVoznju"
             app:layout_constraintEnd_toStartOf="@+id/VRguideButtons"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
-            app:layout_constraintTop_toTopOf="@+id/guideline5" />
-
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonZatvoriVoznju"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:onClick="goToZatvoriVoznju"
-            android:text="@string/btnZatvoriVoznju"
-            android:textSize="16sp"
-            app:backgroundTint="#1f3747"
-            app:cornerRadius="25dp"
-            app:layout_constraintEnd_toStartOf="@+id/VRguideButtons"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
-            app:layout_constraintTop_toBottomOf="@+id/btnOtvoriVoznju" />
+            app:layout_constraintStart_toStartOf="@+id/Vbutton23"
+            app:layout_constraintTop_toTopOf="@+id/HTguideNovaVoznja"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/car_wash_colored_24" />
 
         <TextView
             android:id="@+id/textNaslovAdmin"
@@ -86,18 +99,6 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:contentDescription="@string/imgPositive"
-            app:layout_constraintBottom_toTopOf="@+id/guideline5"
-            app:layout_constraintEnd_toStartOf="@+id/VRguideButtons"
-            app:layout_constraintHorizontal_bias="0.583"
-            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
-            app:layout_constraintTop_toTopOf="@+id/HTguideVozila"
-            app:srcCompat="@drawable/top_car" />
 
         <View
             android:id="@+id/divider"
@@ -222,67 +223,66 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.6" />
 
-        <ImageView
-            android:id="@+id/imgGorivo"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:contentDescription="Dolivanje goriva"
-            android:onClick="goToGorivo"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/HTguideZatvoriVoznju"
-            app:layout_constraintEnd_toStartOf="@+id/Vbutton12"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
-            app:layout_constraintTop_toTopOf="@+id/HTguideNovaVoznja"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/gas_station_colored_24" />
-
-        <ImageView
-            android:id="@+id/imgServis"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:contentDescription="Servis"
-            android:onClick="goToGorivo"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/HTguideZatvoriVoznju"
-            app:layout_constraintEnd_toStartOf="@+id/Vbutton23"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/Vbutton12"
-            app:layout_constraintTop_toTopOf="@+id/HTguideNovaVoznja"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/servis_colored_24" />
-
-
-        <ImageView
-            android:id="@+id/imgPranje"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:contentDescription="@string/btnPranje"
-            android:onClick="goToGorivo"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/HTguideZatvoriVoznju"
-            app:layout_constraintEnd_toStartOf="@+id/VRguideButtons"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/Vbutton23"
-            app:layout_constraintTop_toTopOf="@+id/HTguideNovaVoznja"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/car_wash_colored_24" />
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.41" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#D50000"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="goToAdmin"
+            android:text="@string/buttonTextAdmin"
+            android:textSize="16sp"
+            app:cornerRadius="25dp"
+            app:layout_constraintEnd_toStartOf="@+id/VRguideButtons"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
+            app:layout_constraintTop_toTopOf="@+id/HTguideZatvoriVoznju" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOtvoriVoznju"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#1f3747"
+            android:elevation="2dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="goToOtvoriVoznju"
+            android:stateListAnimator="@null"
+            android:text="@string/btnNovaVoznja"
+            android:textSize="16sp"
+            app:cornerRadius="25dp"
+            app:layout_constraintEnd_toStartOf="@+id/VRguideButtons"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
+            app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonZatvoriVoznju"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="goToZatvoriVoznju"
+            android:text="@string/btnZatvoriVoznju"
+            android:textSize="16sp"
+            app:backgroundTint="#1f3747"
+            app:cornerRadius="25dp"
+            app:layout_constraintEnd_toStartOf="@+id/VRguideButtons"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/VLguideButtons"
+            app:layout_constraintTop_toBottomOf="@+id/btnOtvoriVoznju" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

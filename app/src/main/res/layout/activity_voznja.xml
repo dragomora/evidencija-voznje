@@ -99,9 +99,12 @@
         android:id="@+id/divider4"
         android:layout_width="409dp"
         android:layout_height="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         android:background="#2d5e7f"
-        app:layout_constraintTop_toTopOf="@+id/HBguideTopMenu"
-        tools:layout_editor_absoluteX="1dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/HBguideTopMenu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

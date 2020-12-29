@@ -1,30 +1,29 @@
 package com.example.android.activity;
 
-import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.android.R;
+import com.example.android.data.adapter.VozilaAdapter;
+import com.example.android.data.api.VoziloApi;
+import com.example.android.data.model.Vozilo;
+
+import java.util.Date;
+import java.util.List;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.android.R;
-import com.example.android.data.adapter.KorisniciAdapter;
-import com.example.android.data.adapter.VozilaAdapter;
-import com.example.android.data.adapter.VoznjaAdapter;
-import com.example.android.data.api.KorisniciApi;
-import com.example.android.data.api.VoziloApi;
-import com.example.android.data.model.Korisnici;
-import com.example.android.data.model.Vozilo;
-import org.json.JSONObject;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import java.util.Date;
-import java.util.List;
 
 public class VozilaActivity extends AppCompatActivity {
 
@@ -44,7 +43,17 @@ public class VozilaActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        Button btnBack = findViewById(R.id.buttonBack);
+        btnBack.setOnClickListener(this::onBackBtn);
     }
+
+    private void onBackBtn(View view) {
+        Intent i = new Intent(this, AdminActivity.class);
+        startActivity(i);
+        finish();
+    }
+
     public void getVozilaData(){
 
         (VoziloApi.getClient().getVoziloSum()).enqueue(new Callback<List<Vozilo>>() {
@@ -81,5 +90,12 @@ public class VozilaActivity extends AppCompatActivity {
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, AdminActivity.class);
+        startActivity(i);
+        finish();
     }
 }
